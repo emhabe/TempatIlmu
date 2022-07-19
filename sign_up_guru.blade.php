@@ -127,10 +127,8 @@
                     </div>
                     <label>Jenis Kelamin</label>
                     <div>
-
                       <div class="form-check form-check-inline">
-
-                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin" value="Laki-Laki">
+                       <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin" value="Laki-Laki">
                         <label class="form-check-label" for="laki-laki">Laki-Laki</label>
                       </div>
                       <div class="form-check form-check-inline">
@@ -140,38 +138,53 @@
 
                     </div>
                     <div><label>Kelas</label></div>
-                    @foreach($data['kelas'] as $kelas)
+                    {{-- @foreach($data['kelas'] as $kelas) --}}
                     <nav>
                       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
-                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button>                      
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">X</button>
+                        <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">XI</button>
+                        <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">XII</button>
                       </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
-                      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">...</div>
-                      {{-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">...</div>
-                      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div> --}}
+                      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                        @foreach($data['jurusan'] as $jurusan)
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="jurusan[]" id="jurusan" value="{{$jurusan->nama}}">
+                            <label class="form-check-label" for="{{$jurusan->nama}}">{{$jurusan->nama}}</label>
+                          </div>
+                        @endforeach
+                      </div>
                     </div>
-                    <div class="tab-content" id="nav-tabContent">
-                      {{-- <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">...</div> --}}
-                      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">...</div>
-                      {{-- <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div> --}}
+                    {{-- <div class="tab-content" id="nav-tabContent">
+                      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                        @foreach($data['jurusan'] as $jurusan)
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="jurusan[]" id="jurusan" value="{{$jurusan->nama}}">
+                            <label class="form-check-label" for="{{$jurusan->nama}}">{{$jurusan->nama}}</label>
+                          </div>
+                        @endforeach
+                      </div>
                     </div>
-                    <div class="tab-content" id="nav-tabContent">
-                      {{-- <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">...</div>
-                      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">...</div> --}}
-                      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div>
-                    </div>
-                    @endforeach
+                    <div class="tab-content" id="nav-tabContent">                     
+                      <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                        @foreach($data['jurusan'] as $jurusan)
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" name="jurusan[]" id="jurusan" value="{{$jurusan->nama}}">
+                            <label class="form-check-label" for="{{$jurusan->nama}}">{{$jurusan->nama}}</label>
+                          </div>
+                        @endforeach
+                      </div>
+                    </div> --}}
+                    {{-- @endforeach --}}
 
-                    <div><label>Jurusan</label></div>
+                    {{-- <div><label>Jurusan</label></div>
                     @foreach($data['jurusan'] as $jurusan)
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" name="jurusan[]" id="jurusan" value="{{$jurusan->nama}}">
                       <label class="form-check-label" for="{{$jurusan->nama}}">{{$jurusan->nama}}</label>
                     </div>
-                    @endforeach
+                    @endforeach --}}
 
 
 
