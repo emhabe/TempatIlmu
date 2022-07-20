@@ -248,8 +248,10 @@
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
+              <form action="/daftar_bab/{{$datamapel->id}}" method="GET">
+               <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+               <input type="search" class="form-control" placeholder="Type here..." name="search">
+              </form>
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
@@ -263,7 +265,7 @@
               </a>
             </li>
             <li class="nav-item px-3 d-flex align-items-center">
-             
+
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
@@ -349,13 +351,13 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h5>Bahasa Indonesia</h5>
+            <h5>{{$datamapel->nama_mapel}}</h5>
               <span>
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">
                 <h6>Iwan AFK</h6>
                 </p>
               </span>
-              <a href="/tambah_bab/{{$datamapel->id}}"><span><button type="button" class="btn bg-gradient-primary btn-sm btn-3">Tambah Bab +</button></span></a>
+              <a href="/tambah_bab/{{$datamapel->id}}" type="button" class="btn bg-gradient-primary btn-sm btn-3" data-bs-toggle="modal" data-bs-target="#modal-insert"><span>Tambah Bab +</button></span></a>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -403,7 +405,7 @@
                         </a>
                       </td>
                       <td class="align-middle text-center">
-                        <a href="#" class="text-danger font-weight-bold text-xs delete" data-id="{{$row->id}}" data-nama="{{$row->judul}}">
+                        <a href="DeleteData:;" class="text-danger font-weight-bold text-xs delete" data-id="{{$row->id}}" data-mapel="{{$row->mapel->id}}" data-nama="{{$row->judul}}" >
                           Hapus Bab
                         </a>
                       </td>
@@ -411,10 +413,50 @@
                     @endforeach
                   </tbody>
                 </table>
+                @if(count($data))
+                        @else
+                        <h6 class="text-center" style="margin-right:80px;">~~~~ Data Bab Kosong ~~~~</h6>
+                       @endif
               </div>
             </div>
           </div>
           {{$data->links()}}
+        </div>
+      </div>
+      
+      <div class="col-lg-4">
+        <div class="modal fade" id="modal-insert" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-" role="document">
+            <div class="modal-content">
+              <div class="modal-body p-0">
+                <div class="card card-plain">
+                  <div class="card-header pb-0 text-left">
+                    <h3 class="font-weight-bolder text-primary text-gradient">Tambah Bab</h3>
+                  </div>
+                  <div class="card-body">
+                    <form role="form text-left" action="/insert_bab/{{$datamapel->id}}" method="post" enctype="multipart/form-data">
+                      @csrf
+                      <label>Judul Bab :</label>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="judul" placeholder="Masukkan Judul Bab" name="judul">
+                      </div>
+                      <label>Deskripsi :</label>
+                      <div class="input-group mb-3">
+                        <textarea class="form-control " id="deskripsi" rows="2" name="deskripsi" placeholder="Masukkan Deskripsi Bab"></textarea>
+                      </div>
+                      <label>File Bab :</label>
+                      <div class="input-group mb-3">
+                        <input class="form-control" type="file" id="bab_file" name="bab_file">
+                      </div>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-round bg-gradient-primary btn-lg w-100 mt-4 mb-0">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <footer class="footer pt-3  ">
@@ -453,60 +495,61 @@
       </footer>
     </div>
   </main>
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script>
-      var win = navigator.platform.indexOf('Win') > -1;
-      if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-          damping: '0.5'
-        }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
       }
-    </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-      $('.delete').click(function() {
-        var idbab = $(this).attr('data-id');
-        var judul = $(this).attr('data-nama');
-        swal({
-            title: "Apakah Anda Yakin ?",
-            text: "Kamu akan Menghapus Data Dengan ID:" + judul + " !!",
-            icon: "info",
-            buttons: true,
-            dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              window.location = "/delete_bab/" + idbab + ""
-              swal("Data Berhasil Dihapus !", {
-                icon: "success",
-              });
-            } else {
-              swal({
-                title: "Penghapusan Data Di Batalkan !?",
-                icon: "error",
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    $('.delete').click(function() {
+      var idbab = $(this).attr('data-id');
+      var judul = $(this).attr('data-nama');
+      var idmapel=$(this).attr('data-mapel');
+      swal({
+          title: "Apakah Anda Yakin ?",
+          text: "Anda akan Menghapus Bab Dengan judul : " + judul + " !!",
+          icon: "info",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            window.location = "/delete_bab/" + idbab + "/" + idmapel
+            swal("Data Berhasil Dihapus !", {
+              icon: "success",
+            });
+          } else {
+            swal({
+              title: "Penghapusan Data Di Batalkan !?",
+              icon: "error",
 
-              });
-            }
-          });
-      });
-    </script>
-    <script>
-      @if(Session::has('succes'))
-      toastr.success("{{Session::get('succes')}}")
-      @endif
-    </script>
+            });
+          }
+        });
+    });
+  </script>
+  <script>
+    @if(Session::has('succes'))
+    toastr.success("{{Session::get('succes')}}")
+    @endif
+  </script>
 </body>
 
 </html>

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_tugas');
             $table->string('deskripsi_tugas');
-            $table->string('tenggat');
+            $table->date('tenggat');
             $table->string('file_tugas');
             $table->timestamps();
         });

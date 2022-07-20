@@ -30,4 +30,8 @@ class RuangbelajarController extends Controller
     {
         return view('tampilan.panduan_siswa');
     }
+    public function cara_login()
+    {
+        return view('tampilan.cara_login');
+    }
 }

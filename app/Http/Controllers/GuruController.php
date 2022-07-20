@@ -6,6 +6,8 @@ use App\Http\Middleware\guru;
 use App\Http\Requests\Users\UserguruUpdate;
 use App\Models\Bab;
 use App\Models\sekolah;
+use App\Models\usergurus_kelas;
+use App\Models\usergurus_jurusan;
 use App\Models\Mapel;
 use App\Models\userguru;
 use App\Models\Tugas;
@@ -22,23 +24,28 @@ class GuruController extends Controller
     }
     public function dashboard_guru()
     {
-        $user = userguru::with('sekolah')->get('id_sekolah')->where('nama');
-        return view('guru.dashboard_guru', compact('user'));
+        $data = userguru::with('usergurus_jurusan', 'usergurus_kelas')->where('id', '=', Auth::guard('userguru')->user()->id)->get();
+        return view('guru.dashboard_guru', compact('data'));
     }
     public function daftar_bab(Request $request, $id)
     {
         if ($request->has('search')) {
-            $data = Bab::where('judul', 'LIKE', '%' . $request->search . '%')->paginate(5);
+            $datamapel = Mapel::where('id', $id)->first();
+            $data = Bab::with('mapel')->where('mapel_id', "=", $id)->where('judul', 'LIKE', '%' . $request->search . '%')->paginate(5);
         } else {
             $datamapel = Mapel::where('id', $id)->first();
             $data = Bab::with('mapel')->where('mapel_id', "=", $id)->paginate(5);
         }
         return view('guru.daftar_bab', compact('data', 'datamapel'));
     }
-    public function daftar_mapel_guru()
+    public function daftar_mapel_guru(Request $request)
     {
-        $datamapel = Mapel::all();
-        $datamapel = Mapel::paginate(6);
+        if ($request->has('search')) {
+            $datamapel = Mapel::where('nama_mapel', 'LIKE', '%' . $request->search . '%')->paginate(6);
+        } else {
+            $datamapel = Mapel::all();
+            $datamapel = Mapel::paginate(6);
+        }
         return view('guru.daftar_mapel_guru', compact('datamapel'));
     }
     public function daftar_tugas_guru()
@@ -78,10 +85,11 @@ class GuruController extends Controller
         $user->update($input);
         return redirect('profile_guru');
     }
-    public function edit_tugas($id)
+    public function edit_tugas($bab_id, $tugas_id)
     {
-        $datatugas = Tugas::with('bab')->find($id);
-        return view('guru.edit_tugas', compact('datatugas'));
+        $data = Bab::find($bab_id);
+        $datatugas = Tugas::with('bab')->find($tugas_id);
+        return view('guru.edit_tugas', compact('datatugas', 'data'));
     }
     public function kelas()
     {
@@ -96,7 +104,7 @@ class GuruController extends Controller
         if ($request->has('search')) {
             $data = Bab::where('judul', 'LIKE', '%' . $request->search . '%')->paginate(5);
         } else {
-            $datamapel = Mapel::where('id', $id)->get();
+            $datamapel = Mapel::where('id', $id)->first();
             $data = Bab::with('mapel')->where('mapel_id', "=", $id)->paginate(5);
         }
         return view('guru.lihat_tugas_guru', compact('data', 'datamapel'));
@@ -113,8 +121,7 @@ class GuruController extends Controller
     public function profile_guru()
     {
         $data = userguru::all();
-        $user = userguru::with('sekolah')->get('id_sekolah')->where('nama');
-        return view('guru.profile_guru', compact('data', 'user'));
+        return view('guru.profile_guru', compact('data'));
     }
     public function sign_in_guru()
     {
@@ -145,13 +152,18 @@ class GuruController extends Controller
         return view('guru.tambah_tugas', compact('data'));
     }
 
-    public function tugas_guru($id)
+    public function tugas_guru(Request $request, $id)
     {
-        // $data = Bab::find($id);
-        $data = Bab::where('id', $id)->first();
-        // $datatugas = Tugas::all();
-        $datatugas = Tugas::with('bab')->where('bab_id', "=", $id)->paginate(5);
-        return view('guru.tugas_guru', compact('datatugas', 'data'));
+        if ($request->has('search')) {
+            $data = Bab::where('id', $id)->first();
+            $datatugas = Tugas::with('bab')->where('bab_id', "=", $id)->where('nama_tugas', 'LIKE', '%' . $request->search . '%')->paginate(5);
+            $datamapel = Mapel::where('id', $id)->first();
+        } else {
+            $data = Bab::with('mapel')->where('id', $id)->first();
+            $datatugas = Tugas::with('bab')->where('bab_id', "=", $id)->paginate(5);
+            $datamapel = Mapel::where('id', $id)->first();
+        }
+        return view('guru.tugas_guru', compact('datatugas', 'data', 'datamapel'));
     }
     public function insert_bab(Request $request, $id)
     {
@@ -186,13 +198,13 @@ class GuruController extends Controller
         }
         return redirect('daftar_bab/' . $request->mapel_id)->with('succes', 'Data Berhasil Di Update !');
     }
-    public function delete_bab($id)
+    public function delete_bab($id, $idmapel)
     {
-        $data = Bab::find($id);
         $datatugas = Tugas::with('bab')->where('bab_id', '=', $id);
+        $data = Bab::find($id);
         $data->delete();
         $datatugas->delete();
-        return redirect('daftar_bab')->with('succes', 'Data Berhasil Di Hapus !');
+        return redirect('daftar_bab/' . $idmapel)->with('succes', 'Data Berhasil Di Hapus !');
     }
     public function insert_tugas(Request $request, $id)
     {
@@ -262,7 +274,11 @@ class GuruController extends Controller
     public function delete_mapel($id)
     {
         $datamapel = Mapel::find($id);
+        $data = Bab::with('mapel')->where('mapel_id', '=', $id);
+        $datatugas = Tugas::with('bab')->where('bab_id', '=', $id);
         $datamapel->delete();
+        $data->delete();
+        $datatugas->delete();
         return redirect('daftar_mapel_guru')->with('succes', 'Data Berhasil Di Hapus !');
     }
     public function update_mapel(Request $request, $id)

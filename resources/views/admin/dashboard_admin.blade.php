@@ -41,7 +41,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="/index.html" target="_blank">
         <img src="../assets/img/home.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-2 font-weight-bold">Ruang Belajar</span>
+        <span class="ms-2 font-weight-bold"><span class="text-primary text-gradient">Ruang </span>Belajar</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -266,7 +266,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Sekolah</p>
                     <h5 class="font-weight-bolder mb-0">
-                   {{$data}}
+                      {{$data}}
                       <span class="text-success text-sm font-weight-bolder">Sekolah</span>
 
                     </h5>
@@ -291,7 +291,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Guru</p>
                     <h5 class="font-weight-bolder mb-0">
-                    {{$guru}}
+                      {{$guru}}
                       <span class="text-primary text-sm font-weight-bolder">Guru</span>
                     </h5>
                   </div>
@@ -315,7 +315,7 @@
                   <div class="numbers">
                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Siswa</p>
                     <h5 class="font-weight-bolder mb-0">
-                      910
+                      {{$siswa}}
                       <span class="text-info text-sm font-weight-bolder">Siswa</span>
                     </h5>
                   </div>

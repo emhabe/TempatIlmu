@@ -38,15 +38,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <img src="./assets/img/home.png" width="50">
-        <b><a class="title" href="javascript:;"><span class="text-primary">Ruang </span>Belajar</a></b>
+        <b><a class="navbar-brand" href="javascript:;"><span class="text-primary">Ruang</span>Belajar</a></b>
       </div>
 
       <div class="collapse navbar-collapse" id="navigation-default2">
         <b>
           <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-              <a href="/index">
+              <a href="/">
                 Home
               </a>
             </li>
@@ -117,7 +116,7 @@
             <div class="col-lg-3">
               <div class="card-service wow fadeInUp">
                 <div class="header">
-                  <img src="./assets/img/ivana-square.jpg" width="200" height="200" class="border">
+                  <img src="./assets/img/team-4.jpg" width="200" height="200" class="border">
                 </div>
                 <div class="body">
                   <h5 class="text-secondary">Ivran</h5>
@@ -130,9 +129,9 @@
               </div>
             </div>
             <div class="col-lg-3">
-              <div class="card-service wow fadeInUp">
+            <div class="card-service wow fadeInUp">
                 <div class="header">
-                  <img src="./asset/img/ivancik.jpg" width="200" height="200" class="border">
+                  <img src="./assets/img/team-4.jpg" width="200" height="200" class="border">
                 </div>
                 <div class="body">
                   <h5 class="text-secondary">Agung</h5>
@@ -147,7 +146,7 @@
             <div class="col-lg-3">
               <div class="card-service wow fadeInUp">
                 <div class="header">
-                  <img src="./assets/img/bruce-mars.jpg" width="200" height="200" class="border">
+                  <img src="./assets/img/team-3.jpg" width="200" height="200" class="border">
                 </div>
                 <div class="body">
                   <h5 class="text-secondary">Hafil</h5>
@@ -403,6 +402,10 @@
     }, shortcut.add("Ctrl+U", function() {
       top.location.href = "./error"
     }), shortcut.add("Ctrl+Shift+i", function() {
+      top.location.href = "./error"
+    }), shortcut.add("Ctrl+Shift+c", function() {
+      top.location.href = "./error"
+    }), shortcut.add("Ctrl+Shift+j", function() {
       top.location.href = "./error"
     });
   </script>

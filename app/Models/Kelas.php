@@ -18,4 +18,12 @@ class Kelas extends Model
     {
         return $this->hasOne(usersiswa::class);
     }
+    public function usergurus_jurusan()
+    {
+        return $this->hasOne(usergurus_jurusan::class);
+    }
+    public function userguru_kelas()
+    {
+        return $this->hasOne(usergurus_kelas::class);
+    }
 }

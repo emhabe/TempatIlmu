@@ -20,42 +20,45 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- CSS Files -->
   <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps bg-white" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="/index" target="_blank">
         <img src="../assets/img/home.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-2 font-weight-bold">Ruang Belajar</span>
+        <span class="ms-2 font-weight-bold"><span class="text-primary text-gradient">Ruang </span>Belajar</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse w-auto ps ps--active-y" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link  " href="/dashboard_guru">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"></path>
               </svg>
-              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
-              </svg>
-              <title>Home</title>
-              <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                  <g transform="translate(1716.000000, 291.000000)">
-                    <g transform="translate(0.000000, 148.000000)">
-                      <path class="color-background opacity-6" d="M46.7199583,10.7414583 L40.8449583,0.949791667 C40.4909749,0.360605034 39.8540131,0 39.1666667,0 L7.83333333,0 C7.1459869,0 6.50902508,0.360605034 6.15504167,0.949791667 L0.280041667,10.7414583 C0.0969176761,11.0460037 -1.23209662e-05,11.3946378 -1.23209662e-05,11.75 C-0.00758042603,16.0663731 3.48367543,19.5725301 7.80004167,19.5833333 L7.81570833,19.5833333 C9.75003686,19.5882688 11.6168794,18.8726691 13.0522917,17.5760417 C16.0171492,20.2556967 20.5292675,20.2556967 23.494125,17.5760417 C26.4604562,20.2616016 30.9794188,20.2616016 33.94575,17.5760417 C36.2421905,19.6477597 39.5441143,20.1708521 42.3684437,18.9103691 C45.1927731,17.649886 47.0084685,14.8428276 47.0000295,11.75 C47.0000295,11.3946378 46.9030823,11.0460037 46.7199583,10.7414583 Z">
-                      </path>
-                      <path class="color-background" d="M39.198,22.4912623 C37.3776246,22.4928106 35.5817531,22.0149171 33.951625,21.0951667 L33.92225,21.1107282 C31.1430221,22.6838032 27.9255001,22.9318916 24.9844167,21.7998837 C24.4750389,21.605469 23.9777983,21.3722567 23.4960833,21.1018359 L23.4745417,21.1129513 C20.6961809,22.6871153 17.4786145,22.9344611 14.5386667,21.7998837 C14.029926,21.6054643 13.533337,21.3722507 13.0522917,21.1018359 C11.4250962,22.0190609 9.63246555,22.4947009 7.81570833,22.4912623 C7.16510551,22.4842162 6.51607673,22.4173045 5.875,22.2911849 L5.875,44.7220845 C5.875,45.9498589 6.7517757,46.9451667 7.83333333,46.9451667 L19.5833333,46.9451667 L19.5833333,33.6066734 L27.4166667,33.6066734 L27.4166667,46.9451667 L39.1666667,46.9451667 C40.2482243,46.9451667 41.125,45.9498589 41.125,44.7220845 L41.125,22.2822926 C40.4887822,22.4116582 39.8442868,22.4815492 39.198,22.4912623 Z">
-                      </path>
+              <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
+
+                <title>Home</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                  <g transform="translate(-1716.000000, -439.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <g transform="translate(1716.000000, 291.000000)">
+                      <g transform="translate(0.000000, 148.000000)">
+                        <path class="color-background opacity-6" d="M46.7199583,10.7414583 L40.8449583,0.949791667 C40.4909749,0.360605034 39.8540131,0 39.1666667,0 L7.83333333,0 C7.1459869,0 6.50902508,0.360605034 6.15504167,0.949791667 L0.280041667,10.7414583 C0.0969176761,11.0460037 -1.23209662e-05,11.3946378 -1.23209662e-05,11.75 C-0.00758042603,16.0663731 3.48367543,19.5725301 7.80004167,19.5833333 L7.81570833,19.5833333 C9.75003686,19.5882688 11.6168794,18.8726691 13.0522917,17.5760417 C16.0171492,20.2556967 20.5292675,20.2556967 23.494125,17.5760417 C26.4604562,20.2616016 30.9794188,20.2616016 33.94575,17.5760417 C36.2421905,19.6477597 39.5441143,20.1708521 42.3684437,18.9103691 C45.1927731,17.649886 47.0084685,14.8428276 47.0000295,11.75 C47.0000295,11.3946378 46.9030823,11.0460037 46.7199583,10.7414583 Z">
+                        </path>
+                        <path class="color-background" d="M39.198,22.4912623 C37.3776246,22.4928106 35.5817531,22.0149171 33.951625,21.0951667 L33.92225,21.1107282 C31.1430221,22.6838032 27.9255001,22.9318916 24.9844167,21.7998837 C24.4750389,21.605469 23.9777983,21.3722567 23.4960833,21.1018359 L23.4745417,21.1129513 C20.6961809,22.6871153 17.4786145,22.9344611 14.5386667,21.7998837 C14.029926,21.6054643 13.533337,21.3722507 13.0522917,21.1018359 C11.4250962,22.0190609 9.63246555,22.4947009 7.81570833,22.4912623 C7.16510551,22.4842162 6.51607673,22.4173045 5.875,22.2911849 L5.875,44.7220845 C5.875,45.9498589 6.7517757,46.9451667 7.83333333,46.9451667 L19.5833333,46.9451667 L19.5833333,33.6066734 L27.4166667,33.6066734 L27.4166667,46.9451667 L39.1666667,46.9451667 C40.2482243,46.9451667 41.125,45.9498589 41.125,44.7220845 L41.125,22.2822926 C40.4887822,22.4116582 39.8442868,22.4815492 39.198,22.4912623 Z">
+                        </path>
+                      </g>
                     </g>
                   </g>
                 </g>
-              </g>
-              </svg>
+
+              </path>
             </div>
             <span class="nav-link-text ms-1">Home</span>
           </a>
@@ -128,43 +131,15 @@
                   </ul>
                 </div>
               </li>
+            </ul>
           </div>
         </li>
-        <!-- <li class="nav-item">
-        
-          <a class="nav-link  " href="../guru/daftar_materi_tugas.html">
-            <div
-              class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>Daftar Tugas Materi</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-2319.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(603.000000, 0.000000)">
-                        <path class="color-background"
-                          d="M22.7597136,19.3090182 L38.8987031,11.2395234 C39.3926816,10.9925342 39.592906,10.3918611 39.3459167,9.89788265 C39.249157,9.70436312 39.0922432,9.5474453 38.8987261,9.45068056 L20.2741875,0.1378125 L20.2741875,0.1378125 C19.905375,-0.04725 19.469625,-0.04725 19.0995,0.1378125 L3.1011696,8.13815822 C2.60720568,8.38517662 2.40701679,8.98586148 2.6540352,9.4798254 C2.75080129,9.67332903 2.90771305,9.83023153 3.10122239,9.9269862 L21.8652864,19.3090182 C22.1468139,19.4497819 22.4781861,19.4497819 22.7597136,19.3090182 Z">
-                        </path>
-                        <path class="color-background opacity-6"
-                          d="M23.625,22.429159 L23.625,39.8805372 C23.625,40.4328219 24.0727153,40.8805372 24.625,40.8805372 C24.7802551,40.8805372 24.9333778,40.8443874 25.0722402,40.7749511 L41.2741875,32.673375 L41.2741875,32.673375 C41.719125,32.4515625 42,31.9974375 42,31.5 L42,14.241659 C42,13.6893742 41.5522847,13.241659 41,13.241659 C40.8447549,13.241659 40.6916418,13.2778041 40.5527864,13.3472318 L24.1777864,21.5347318 C23.8390024,21.7041238 23.625,22.0503869 23.625,22.429159 Z">
-                        </path>
-                        <path class="color-background opacity-6"
-                          d="M20.4472136,21.5347318 L1.4472136,12.0347318 C0.953235098,11.7877425 0.352562058,11.9879669 0.105572809,12.4819454 C0.0361450918,12.6208008 6.47121774e-16,12.7739139 0,12.929159 L0,30.1875 L0,30.1875 C0,30.6849375 0.280875,31.1390625 0.7258125,31.3621875 L19.5528096,40.7750766 C20.0467945,41.0220531 20.6474623,40.8218132 20.8944388,40.3278283 C20.963859,40.1889789 21,40.0358742 21,39.8806379 L21,22.429159 C21,22.0503869 20.7859976,21.7041238 20.4472136,21.5347318 Z">
-                        </path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Daftar Tugas Materi</span>
-          </a>
-        </li> -->
+
         <li class="nav-item">
           <a class="nav-link  " href="/daftar_tugas_guru">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-list-nested" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z" />
+                <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z"></path>
               </svg>
               <title>Daftar Tugas</title>
               <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -179,7 +154,7 @@
                   </g>
                 </g>
               </g>
-              </svg>
+
             </div>
             <span class="nav-link-text ms-1">Daftar Tugas</span>
           </a>
@@ -239,26 +214,40 @@
           </a>
         </li>
       </ul>
+      <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+        <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+      </div>
+      <div class="ps__rail-y" style="top: 0px; height: 303px; right: 0px;">
+        <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 289px;"></div>
+      </div>
+    </div>
+    <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+      <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+    </div>
+    <div class="ps__rail-y" style="top: 0px; right: 0px;">
+      <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
     </div>
   </aside>
   <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
     <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="false">
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl position-sticky blur shadow-blur mt-4 left-auto top-1 z-index-sticky" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/daftar_mapel_guru">Daftar Mapel</a></li>
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/daftar_bab">Daftar Bab</a></li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/daftar_bab/{{$data->mapel_id}}">Daftar Bab</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Tugas</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Tugas</h6>
+          <h6 class="font-weight-bolder mb-0">Tugas {{$datamapel->nama_mapel}}</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
+              <form action="/tugas_guru/{{$data->id}}" method="GET">
+                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <input type="search" class="form-control" placeholder="Type here..." name="search">
+              </form>
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
@@ -272,13 +261,11 @@
               </a>
             </li>
             <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
+
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
+                <i class="fa fa-bell cursor-pointer" aria-hidden="true"></i>
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                 <li class="mb-2">
@@ -292,7 +279,7 @@
                           <span class="font-weight-bold">New message</span> from Laur
                         </h6>
                         <p class="text-xs text-secondary mb-0 ">
-                          <i class="fa fa-clock me-1"></i>
+                          <i class="fa fa-clock me-1" aria-hidden="true"></i>
                           13 minutes ago
                         </p>
                       </div>
@@ -310,7 +297,7 @@
                           <span class="font-weight-bold">New album</span> by Travis Scott
                         </h6>
                         <p class="text-xs text-secondary mb-0 ">
-                          <i class="fa fa-clock me-1"></i>
+                          <i class="fa fa-clock me-1" aria-hidden="true"></i>
                           1 day
                         </p>
                       </div>
@@ -341,7 +328,7 @@
                           Payment successfully completed
                         </h6>
                         <p class="text-xs text-secondary mb-0 ">
-                          <i class="fa fa-clock me-1"></i>
+                          <i class="fa fa-clock me-1" aria-hidden="true"></i>
                           2 days
                         </p>
                       </div>
@@ -361,14 +348,14 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h5>Bahasa Indonesia</h5>
+              <h5>{{$data->judul}}</h5>
               <span>
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">
                 <h6></h6>
                 </p>
               </span>
 
-              <a href="/tambah_tugas/{{$data->id}}"><span><button type="button" class="btn bg-gradient-primary btn-sm btn-3">Tambah Tugas +</button></span></a>
+              <a href="/tambah_tugas/{{$data->id}}" type="button" class="btn bg-gradient-primary btn-sm btn-3" data-bs-toggle="modal" data-bs-target="#modal-insert"><span>Tambah Tugas +</button></span></a>
 
             </div>
             <div class="card-body px-0 pt-0 pb-2">
@@ -406,7 +393,7 @@
                         </a>
                       </td>
                       <td class="align-middle text-center">
-                        <a href="/edit_tugas/{{$tugas->id}}" class="text-primary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        <a href="/edit_tugas/{{$data->id}}/{{$tugas->id}}" class="text-primary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Edit Tugas
                         </a>
                       </td>
@@ -415,15 +402,100 @@
                           Hapus Tugas
                         </a>
                       </td>
+                      <!-- {{Carbon\Carbon::parse($tugas->tenggat)->format('d/m/Y')}} -->
                     </tr>
                   </tbody>
+                  <div class="col-lg-4">
+                    <div class="modal fade" id="modal-update{{$tugas->id}}" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-" role="document">
+                        <div class="modal-content">
+                          <div class="modal-body p-0">
+                            <div class="card card-plain">
+                              <div class="card-header pb-0 text-left">
+                                <h4 class="font-weight-bolder text-info text-gradient">Edit Tugas</h4>
+                              </div>
+                              <div class="card-body">
+                                <form role="form text-left" action="/update_tugas/{{$tugas->id}}" method="post" enctype="multipart/form-data">
+                                  @csrf
+                                  <input type="text" name="bab_id" value="{{$tugas->bab->id}}" hidden>
+                                  <label>Judul Tugas :</label>
+                                  <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="nama_tugas" placeholder="Masukkan Judul Tugas" name="nama_tugas" value="{{$tugas->nama_tugas}}">
+                                  </div>
+                                  <label>Deskripsi Mapel :</label>
+                                  <div class="input-group mb-3">
+                                    <textarea class="form-control " id="deskripsi_tugas" name="deskripsi_tugas" rows="2" placeholder="Masukkan Deskripsi Tugas">{{$tugas->deskripsi_tugas}}</textarea>
+                                  </div>
+                                  <label>Tenggat Tugas:</label>
+                                  <div class="input-group mb-3">
+                                    <input class="form-control form-control-sm" type="datetime-local" id="tenggat" name="tenggat" value="{{$tugas->tenggat}}">
+                                  </div>
+                                  <label>Foto Mapel :</label>
+                                  <div class="input-group mb-3">
+                                    <input class="form-control" type="file" id="file_tugas" name="file_tugas">
+                                  </div>
+                                  <iframe type="application/pdf" src="{{asset('Tugas/'.$tugas->file_tugas)}}" width="470" height="200"></iframe>
+                                  <div class="text-center">
+                                    <button type="submit" class="btn btn-round bg-gradient-info btn-lg w-100 mt-4 mb-0">Update</button>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   @endforeach
                 </table>
+                @if(count($datatugas))
+                @else
+                <h6 class="text-center" style="margin-right:80px;">~~~~ Data Tugas Kosong ~~~~</h6>
+                @endif
               </div>
             </div>
           </div>
         </div>
         {{$datatugas->links()}}
+      </div>
+      <div class="col-lg-4">
+        <div class="modal fade" id="modal-insert" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-" role="document">
+            <div class="modal-content">
+              <div class="modal-body p-0">
+                <div class="card card-plain">
+                  <div class="card-header pb-0 text-left">
+                    <h3 class="font-weight-bolder text-primary text-gradient">Tambah Tugas</h3>
+                  </div>
+                  <div class="card-body">
+                    <form role="form text-left" action="/insert_tugas/{{$data->id}}" method="post" enctype="multipart/form-data">
+                      @csrf
+                      <label>Judul Tugas :</label>
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="nama_tugas" placeholder="Masukkan Judul Tugas" name="nama_tugas">
+                      </div>
+                      <label>Deskripsi :</label>
+                      <div class="input-group mb-3">
+                        <textarea class="form-control " id="deskripsi_tugas" rows="2" name="deskripsi_tugas" placeholder="Masukkan Deskripsi Bab"></textarea>
+                      </div>
+                      <label>Tenggat Tugas:</label>
+                      <div class="input-group mb-3">
+                        <input class="form-control form-control-sm" type="datetime-local" id="tenggat" name="tenggat">
+                      </div>
+                      <label>File Tugas :</label>
+                      <div class="input-group mb-3">
+                        <input class="form-control" type="file" id="file_tugas" name="file_tugas">
+                      </div>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-round bg-gradient-primary btn-lg w-100 mt-4 mb-0">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <footer class="footer pt-3  ">
         <div class="container-fluid">
@@ -461,116 +533,71 @@
       </footer>
     </div>
   </main>
-  <div class="fixed-plugin">
-    <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-      <i class="fa fa-cog py-2"> </i>
-    </a>
-    <div class="card shadow-lg ">
-      <div class="card-header pb-0 pt-3 ">
-        <div class="float-start">
-          <h5 class="mt-3 mb-0">Konfigurasi Ruang Belajar</h5>
-        </div>
-        <div class="float-end mt-4">
-          <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
-            <i class="fa fa-close"></i>
-          </button>
-        </div>
-        <!-- End Toggle Button -->
-      </div>
-      <hr class="horizontal dark my-1">
-      <div class="card-body pt-sm-3 pt-0">
-        <!-- Sidebar Backgrounds -->
-        <div>
-          <h6 class="mb-0">Warna SideBar</h6>
-        </div>
-        <a href="javascript:void(0)" class="switch-trigger background-color">
-          <div class="badge-colors my-2 text-start">
-            <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
-            <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
-          </div>
-        </a>
-        <!-- Sidenav Type -->
-        <div class="mt-3">
-          <h6 class="mb-0">Tipe Sidenav</h6>
-          <p class="text-sm">Pilih antara 2 tipe Sidenav yang berbeda.</p>
-        </div>
-        <div class="d-flex">
-          <button class="btn bg-gradient-primary w-100 px-3 mb-2 active" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
-          <button class="btn bg-gradient-primary w-100 px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
-        </div>
-        <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
-        <!-- Navbar Fixed -->
-        <div class="mt-3">
-          <h6 class="mb-0">Navbar Fixed</h6>
-        </div>
-        <div class="form-check form-switch ps-0">
-          <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
-        </div>
-        <hr class="horizontal dark my-sm-4">
-        <div class="w-100 text-center">
-        </div>
-      </div>
-    </div>
-    <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <script>
-      var win = navigator.platform.indexOf('Win') > -1;
-      if (win && document.querySelector('#sidenav-scrollbar')) {
-        var options = {
-          damping: '0.5'
-        }
-        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-      }
-    </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-      $('.delete').click(function() {
-        var idtugas = $(this).attr('data-id');
-        var idbab = $(this).attr('data-idbab');
-        var nama = $(this).attr('data-nama');
-        swal({
-            title: "Apakah Anda Yakin ?",
-            text: "Kamu akan Menghapus Data Dengan ID:" + nama + " !!",
-            icon: "info",
-            buttons: true,
-            dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              window.location = "/delete_tugas/" + idtugas + "/" + idbab
-              swal("Data Berhasil Dihapus !", {
-                icon: "success",
-              });
-            } else {
-              swal({
-                title: "Penghapusan Data Di Batalkan !?",
-                icon: "error",
 
-              });
-            }
-          });
-      });
-    </script>
-    <script>
-      @if(Session::has('succes'))
-      toastr.success("{{Session::get('succes')}}")
-      @endif
-    </script>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    config = {
+      altInput: true,
+      altFormat: "J  F, Y",
+      dateFormat: "Y-m-d",
+    }
+    flatpickr("input[type=datetime-local]", config);
+  </script>
+  <script>
+    $('.delete').click(function() {
+      var idtugas = $(this).attr('data-id');
+      var idbab = $(this).attr('data-idbab');
+      var nama = $(this).attr('data-nama');
+      swal({
+          title: "Apakah Anda Yakin ?",
+          text: "Kamu akan Menghapus Data Dengan ID:" + nama + " !!",
+          icon: "info",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            window.location = "/delete_tugas/" + idtugas + "/" + idbab
+            swal("Data Berhasil Dihapus !", {
+              icon: "success",
+            });
+          } else {
+            swal({
+              title: "Penghapusan Data Di Batalkan !?",
+              icon: "error",
+
+            });
+          }
+        });
+    });
+  </script>
+  <script>
+    @if(Session::has('succes'))
+    toastr.success("{{Session::get('succes')}}")
+    @endif
+  </script>
 </body>
 
 </html>

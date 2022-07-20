@@ -2737,10 +2737,49 @@ progress {
   height: 1.4rem;
 }
 
-.form-control::placeholder {
-  color: #adb5bd;
-  opacity: 1;
+.form-control::-moz-placeholder {
+  color: #b4bdc6;
+  opacity: 1
 }
+
+.form-control::placeholder {
+  color: #b4bdc6;
+  opacity: 1
+}
+.form-control::-moz-placeholder {
+  -moz-transition: all .25s ease;
+  transition: all .25s ease
+}
+
+.form-control::placeholder {
+  transition: all .25s ease
+}
+
+.form-control:focus::-moz-placeholder {
+  transform: translate(5px);
+  -moz-transition: all .25s ease;
+  transition: all .25s ease
+}
+
+.form-control:focus::placeholder {
+  transform: translate(5px);
+  transition: all .25s ease
+}
+.form-floating>.form-control:focus::-moz-placeholder,
+.form-floating>.form-control:not(:placeholder-shown)::-moz-placeholder {
+    color: #b4bdc6
+}
+
+.form-floating>.form-control:not(:-moz-placeholder-shown)::placeholder {
+    color: #b4bdc6
+}
+
+.form-floating>.form-control:focus::placeholder,
+.form-floating>.form-control:not(:placeholder-shown)::placeholder {
+    color: #b4bdc6
+}
+
+
 
 .form-control:disabled,
 .form-control[readonly] {
@@ -3206,16 +3245,24 @@ textarea.form-control-lg {
   padding: 1rem 0.75rem;
 }
 
+.form-floating>.form-control::-moz-placeholder {
+  color: transparent
+}
+
 .form-floating>.form-control::placeholder {
-  color: transparent;
+  color: transparent
+}
+
+.form-floating>.form-control:not(:-moz-placeholder-shown) {
+  padding-top: 1.625rem;
+  padding-bottom: .625rem
 }
 
 .form-floating>.form-control:focus,
 .form-floating>.form-control:not(:placeholder-shown) {
   padding-top: 1.625rem;
-  padding-bottom: 0.625rem;
+  padding-bottom: .625rem
 }
-
 .form-floating>.form-control:-webkit-autofill {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
@@ -3224,6 +3271,11 @@ textarea.form-control-lg {
 .form-floating>.form-select {
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
+}
+
+.form-floating>.form-control:not(:-moz-placeholder-shown)~label {
+  opacity: .75;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem)
 }
 
 .form-floating>.form-control:focus~label,
@@ -7687,45 +7739,63 @@ fieldset:disabled .btn {
   vertical-align: middle;
   cursor: wait;
   background-color: currentColor;
-  opacity: 0.5;
+  opacity: .5
 }
 
 .placeholder.btn::before {
   display: inline-block;
-  content: "";
+  content: ""
 }
 
 .placeholder-xs {
-  min-height: .6em;
+  min-height: .6em
 }
 
 .placeholder-sm {
-  min-height: .8em;
+  min-height: .8em
 }
 
 .placeholder-lg {
-  min-height: 1.2em;
+  min-height: 1.2em
 }
 
 .placeholder-glow .placeholder {
-  animation: placeholder-glow 2s ease-in-out infinite;
+  -webkit-animation: placeholder-glow 2s ease-in-out infinite;
+  animation: placeholder-glow 2s ease-in-out infinite
+}
+
+@-webkit-keyframes placeholder-glow {
+  50% {
+      opacity: .2
+  }
 }
 
 @keyframes placeholder-glow {
   50% {
-    opacity: 0.2;
+      opacity: .2
   }
 }
 
 .placeholder-wave {
-  mask-image: linear-gradient(130deg, #000 55%, rgba(0, 0, 0, 0.8) 75%, #000 95%);
+  -webkit-mask-image: linear-gradient(130deg, #435971 55%, rgba(0, 0, 0, 0.8) 75%, #435971 95%);
+  mask-image: linear-gradient(130deg, #435971 55%, rgba(0, 0, 0, 0.8) 75%, #435971 95%);
+  -webkit-mask-size: 200% 100%;
   mask-size: 200% 100%;
-  animation: placeholder-wave 2s linear infinite;
+  -webkit-animation: placeholder-wave 2s linear infinite;
+  animation: placeholder-wave 2s linear infinite
+}
+
+@-webkit-keyframes placeholder-wave {
+  100% {
+      -webkit-mask-position: -200% 0%;
+      mask-position: -200% 0%
+  }
 }
 
 @keyframes placeholder-wave {
   100% {
-    mask-position: -200% 0%;
+      -webkit-mask-position: -200% 0%;
+      mask-position: -200% 0%
   }
 }
 

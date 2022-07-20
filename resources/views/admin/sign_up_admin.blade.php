@@ -109,10 +109,11 @@
                 <div class="card-body">
                   <form action="/sign_up_useradmin" method="post">
                     @csrf
-
                     <label>Nama</label>
                     <div class="mb-3">
                       <input type="text" class="form-control" name="name" placeholder="Nama" aria-label="Email" aria-describedby="email-addon">
+
+
                     </div>
                     <label>Email</label>
                     <div class="mb-3">
@@ -213,14 +214,14 @@
   <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script>
- function myFunction() {
-  var x = document.getElementById("myInput");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
-  }
-}
+    function myFunction() {
+      var x = document.getElementById("myInput");
+      if (x.type === "password") {
+        x.type = "text";
+      } else {
+        x.type = "password";
+      }
+    }
 
 
 
@@ -230,7 +231,7 @@
         damping: '0.5'
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-      
+
     }
   </script>
   <!-- Github buttons -->

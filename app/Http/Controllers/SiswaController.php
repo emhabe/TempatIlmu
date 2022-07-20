@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Jurusan;
+use App\Models\Tugas_siswa;
 use App\Models\Kelas;
+use App\Models\Jurusan;
+use Illuminate\Http\Request;
 
 class SiswaController extends Controller
 {
@@ -74,10 +75,38 @@ class SiswaController extends Controller
     }
     public function view()
     {
-        return view('pages.view');
+        $datatugas = Tugas_siswa::all();
+        return view('pages.view', compact('datatugas'));
     }
     public function lihat_tugas_siswa()
     {
         return view('pages.lihat_tugas_siswa');
+    }
+    public function insert_tugas_siswa(Request $request)
+    {
+        $datatugas = array();
+        if ($files = $request->file('upload_tugas')) {
+            foreach ($files as $file) {
+                $ext = strtolower($file->getClientOriginalName());
+                $datatugas_full_name = '.' . $ext;
+                $upload_path = 'storage_tugas/';
+                $datatugas_url = $upload_path . $datatugas_full_name;
+                $file->move($upload_path, $datatugas_full_name);
+                $datatugas[] = $datatugas_url;
+            }
+        }
+        Tugas_siswa::create([
+            'upload_tugas' => implode('-', $datatugas),
+        ]);
+        // $datatugas = Tugas_siswa::create([
+        //     'upload_tugas' => $request->upload_tugas,
+
+        // ]);
+        // if ($request->hasfile('upload_tugas')) {
+        //     $request->file('upload_tugas')->move('storage_tugas/', $request->file('upload_tugas')->getClientOriginalName());
+        //     $datatugas->upload_tugas = $request->file('upload_tugas')->getClientOriginalName();
+        //     $datatugas->save();
+        // }
+        return redirect('view');
     }
 }

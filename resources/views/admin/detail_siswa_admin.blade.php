@@ -43,7 +43,7 @@
         aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="../index.html" target="_blank">
         <img src="../assets/img/home.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-2 font-weight-bold">Ruang Belajar</span>
+        <span class="ms-2 font-weight-bold"><span class="text-primary text-gradient">Ruang </span>Belajar</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">

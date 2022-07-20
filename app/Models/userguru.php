@@ -31,13 +31,22 @@ class userguru extends Authenticatable
 
     public function kelas()
     {
-        return $this->belongsTo(kelas::class);
+        return $this->belongsTo(Kelas::class);
     }
 
     public function sekolah()
     {
         return $this->belongsTo(sekolah::class, 'id_sekolah', 'id');
     }
+    public function usergurus_jurusan()
+    {
+        return $this->hasMany(usergurus_jurusan::class, 'usergurus_id', 'id');
+    }
+    public function usergurus_kelas()
+    {
+        return $this->hasMany(usergurus_kelas::class, 'usergurus_id', 'id');
+    }
+
 
 
     /**

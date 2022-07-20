@@ -112,6 +112,24 @@
               <div class="card-body">
                 <form role="form text-left" action="/sign_in_prosesguru" method="post">
                   @csrf
+                  @if ($pesan = Session::get('pesan'))
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="alert-text">{{$pesan}}</span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div> @endif
+                  @if ($logout = Session::get('logout'))
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                    <span class="alert-text">
+                      {{$logout}}
+                    </span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  @endif
                   <div class="mb-3">
                     <input type="text" class="form-control" placeholder="NIP" id="nip" name="nip">
                   </div>

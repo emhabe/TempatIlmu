@@ -9,15 +9,16 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('tampilan.index');
+    return view('welcome');
 });
 //tampilan awal
-Route::get('/index', [RuangbelajarController::class, 'index'])->name('index');
+Route::get('/', [RuangbelajarController::class, 'index'])->name('index');
 Route::get('/about', [RuangbelajarController::class, 'about'])->name('about');
 Route::get('/contact', [RuangbelajarController::class, 'contact'])->name('contact');
 Route::get('/error', [RuangbelajarController::class, 'error'])->name('error');
 Route::get('/panduan_guru', [RuangbelajarController::class, 'panduan_guru'])->name('panduan_guru');
 Route::get('/panduan_siswa', [RuangbelajarController::class, 'panduan_siswa'])->name('panduan_siswa');
+Route::get('/cara_login', [RuangbelajarController::class, 'cara_login'])->name('cara_login');
 
 // login admin
 Route::get('/sign_in_admin', [LoginController::class, 'sign_in_admin'])->name('admin.sign_in_admin');
@@ -54,11 +55,12 @@ Route::get('/sign_out_guru', [LoginController::class, 'sign_out_guru'])->name('s
 //edit profile guru
 Route::post('/update_profile_guru', [GuruController::class, 'update_profile_guru'])->name('update_profile_guru');
 
-//login siswa
+
+//proses login siswa
 Route::get('/sign_in_siswa', [SiswaController::class, 'sign_in_siswa'])->name('sign_in_siswa');
-Route::post('/sign_in_prosessiswa', [LoginController::class, 'sign_in_prosessiswa'])->name('sign_in_prosessiswa');
-Route::get('/sign_up_siswa', [SiswaController::class, 'sign_up_siswa'])->name('sign_up_siswa');
 Route::post('/sign_up_usersiswa', [LoginController::class, 'sign_up_usersiswa'])->name('sign_up_usersiswa');
+Route::get('/sign_up_siswa', [SiswaController::class, 'sign_up_siswa'])->name('sign_up_siswa');
+Route::post('/sign_in_prosessiswa', [LoginController::class, 'sign_in_prosessiswa'])->name('sign_in_prosessiswa');
 //tampilan guru
 
 Route::get('/dashboard_guru', [GuruController::class, 'dashboard_guru'])->name('dashboard_guru');
@@ -68,7 +70,7 @@ Route::get('/daftar_tugas_guru', [GuruController::class, 'daftar_tugas_guru'])->
 Route::get('/edit_bab/{id}', [GuruController::class, 'edit_bab'])->name('edit_bab');
 Route::get('/edit_materi', [GuruController::class, 'edit_materi'])->name('edit_materi');
 Route::get('/edit_profile_guru', [GuruController::class, 'edit_profile_guru'])->name('edit_profile_guru');
-Route::get('/edit_tugas/{id}', [GuruController::class, 'edit_tugas'])->name('edit_tugas');
+Route::get('/edit_tugas/{bab_id}/{tugas_id}', [GuruController::class, 'edit_tugas'])->name('edit_tugas');
 Route::get('/kelas', [GuruController::class, 'kelas'])->name('kelas');
 Route::get('/lihat_materi_guru', [GuruController::class, 'lihat_materi_guru'])->name('lihat_materi_guru');
 Route::get('/lihat_tugas_guru/{id}', [GuruController::class, 'lihat_tugas_guru'])->name('lihat_tugas_guru');
@@ -80,7 +82,7 @@ Route::get('/tambah_materi', [GuruController::class, 'tambah_materi'])->name('ta
 Route::get('/tugas_guru/{id}', [GuruController::class, 'tugas_guru'])->name('tugas_guru');
 Route::get('/tambah_tugas/{id}', [GuruController::class, 'tambah_tugas'])->name('tambah_tugas');
 Route::post('/update_bab/{id}', [GuruController::class, 'update_bab'])->name('update_bab');
-Route::get('/delete_bab/{id}', [GuruController::class, 'delete_bab'])->name('delete_bab');
+Route::get('/delete_bab/{id}/{idmapel}', [GuruController::class, 'delete_bab'])->name('delete_bab');
 Route::get('/tugas_guru/{id}', [GuruController::class, 'tugas_guru'])->name('tugas_guru');
 Route::post('/insert_tugas/{id}', [GuruController::class, 'insert_tugas'])->name('insert_tugas');
 Route::post('/insert_bab/{id}', [GuruController::class, 'insert_bab'])->name('insert_bab');
@@ -108,3 +110,4 @@ Route::get('/profile_siswa', [SiswaController::class, 'profile_siswa'])->name('p
 Route::get('/tugas_siswa', [SiswaController::class, 'tugas_siswa'])->name('tugas_siswa');
 Route::get('/daftar_tugas_materi', [SiswaController::class, 'daftar_tugas_materi'])->name('daftar_tugas_materi');
 Route::get('/view', [SiswaController::class, 'view'])->name('view');
+Route::post('/insert_tugas_siswa', [SiswaController::class, 'insert_tugas_siswa'])->name('insert_tugas_siswa');

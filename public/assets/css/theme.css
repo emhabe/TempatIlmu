@@ -163,14 +163,6 @@ a.text-secondary:hover, a.text-secondary:focus {
   color: #59547c !important;
 }
 
-.text-success {
-  color: #35bb78 !important;
-}
-
-a.text-success:hover, a.text-success:focus {
-  color: #28a868 !important;
-}
-
 .text-info {
   color: #05B4E1 !important;
 }
@@ -179,13 +171,6 @@ a.text-info:hover, a.text-info:focus {
   color: #07a2c8 !important;
 }
 
-.text-warning {
-  color: #FAC14D !important;
-}
-
-a.text-warning:hover, a.text-warning:focus {
-  color: #ebb039 !important;
-}
 
 .text-danger {
   color: #FF4943 !important;

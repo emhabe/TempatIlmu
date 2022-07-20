@@ -41,7 +41,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="/index" target="_blank">
         <img src="../assets/img/home.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-2 font-weight-bold">Ruang Belajar</span>
+        <span class="ms-2 font-weight-bold"><span class="text-primary text-gradient">Ruang </span>Belajar</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -481,18 +481,57 @@
             </div>
 
             <div class="card-body p-3">
-              <ul class="list-group">
+            <ul class="list-group">
                 <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                   <div class="avatar me-3">
                     <img src="../assets/img/kal-visuals-square.jpg" alt="kal" class="border-radius-lg shadow">
                   </div>
                   <div class="d-flex align-items-start flex-column justify-content-center">
-                    <h6 class="mb-0 text-sm"></h6>
+                    <h6 class="mb-0 text-sm">Sophie B.</h6>
 
                   </div>
 
+                </li>
+                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                  <div class="avatar me-3">
+                    <img src="../assets/img/marie.jpg" alt="kal" class="border-radius-lg shadow">
+                  </div>
+                  <div class="d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">Anne Marie</h6>
 
+                  </div>
 
+                </li>
+                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                  <div class="avatar me-3">
+                    <img src="../assets/img/ivana-square.jpg" alt="kal" class="border-radius-lg shadow">
+                  </div>
+                  <div class="d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">Ivanna</h6>
+
+                  </div>
+
+                </li>
+                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                  <div class="avatar me-3">
+                    <img src="../assets/img/team-4.jpg" alt="kal" class="border-radius-lg shadow">
+                  </div>
+                  <div class="d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">Peterson</h6>
+
+                  </div>
+
+                </li>
+                <li class="list-group-item border-0 d-flex align-items-center px-0">
+                  <div class="avatar me-3">
+                    <img src="../assets/img/team-3.jpg" alt="kal" class="border-radius-lg shadow">
+                  </div>
+                  <div class="d-flex align-items-start flex-column justify-content-center">
+                    <h6 class="mb-0 text-sm">Nick Daniel</h6>
+
+                  </div>
+
+                </li>
               </ul>
             </div>
           </div>

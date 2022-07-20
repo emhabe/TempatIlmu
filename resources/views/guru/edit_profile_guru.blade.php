@@ -45,7 +45,7 @@ $cek2 = explode(',', Auth::guard('userguru')->user()->kelas_id);
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="/index" target="_blank">
         <img src="../assets/img/home.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-2 font-weight-bold">Ruang Belajar</span>
+        <span class="ms-2 font-weight-bold"><span class="text-primary text-gradient">Ruang </span>Belajar</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">

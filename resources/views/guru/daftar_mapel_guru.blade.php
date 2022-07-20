@@ -249,7 +249,9 @@
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group">
               <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here...">
+               <form action="/daftar_mapel_guru" method="get">
+                <input type="search"id="inputPassword6" name="search" class="form-control" placeholder="Type here..." name="search">
+              </form>
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
@@ -374,7 +376,7 @@
                         <li>
                           <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item border-radius-md text-danger font-weight-bolder delete " href="javascript:;" data-id="{{$row->id}}" data-nama="{{$row->nama_mapel}}">Remove Mapel <i class="fa-solid fa-trash-can fa-1x fa-right fa-bounce"></i></a></li>
+                        <li><a class="dropdown-item border-radius-md text-danger font-weight-bolder delete" href="javascript:;" data-id="{{$row->id}}" data-nama="{{$row->nama_mapel}}">Remove Mapel <i class="fa-solid fa-trash-can fa-1x fa-right "></i></a></li>
                       </ul>
                     </div>
                   </div>
@@ -401,15 +403,15 @@
                       <div class="card-body">
                         <form role="form text-left" action="/update_mapel/{{$row->id}}" method="post" enctype="multipart/form-data">
                           @csrf
-                          <label>Nama Mapel</label>
+                          <label>Nama Mapel :</label>
                           <div class="input-group mb-3">
                             <input type="text" class="form-control" id="nama_mapel" placeholder="Masukkan Nama Mata Pelajaran" name="nama_mapel" value="{{$row->nama_mapel}}">
                           </div>
-                          <label>Deskripsi Mapel </label>
+                          <label>Deskripsi Mapel :</label>
                           <div class="input-group mb-3">
                             <textarea class="form-control " id="deskripsi_mapel" rows="2" name="deskripsi_mapel" placeholder="Masukkan Deskripsi Mata Pelajaran">{{$row->deskripsi_mapel}}</textarea>
                           </div>
-                          <label>Foto Mapel</label>
+                          <label>Foto Mapel :</label>
                           <div class="input-group mb-3">
                             <input class="form-control" type="file" id="foto_mapel" name="foto_mapel">
 
@@ -428,6 +430,10 @@
           </div>
         </div>
         @endforeach
+        @if(count($datamapel))
+                        @else
+                        <h6 class="text-center" style="margin-right:100px;">~~~~ Data Mapel Kosong ~~~~</h6>
+                       @endif
       </div>
     </div>
     <div class="col-lg-4">
@@ -442,15 +448,15 @@
                 <div class="card-body">
                   <form role="form text-left" action="/insert_mapel" method="post" enctype="multipart/form-data">
                     @csrf
-                    <label>Nama Mapel</label>
+                    <label>Nama Mapel :</label>
                     <div class="input-group mb-3">
                       <input type="text" class="form-control" id="nama_mapel" placeholder="Masukkan Nama Mata Pelajaran" name="nama_mapel">
                     </div>
-                    <label>Deskripsi Mapel </label>
+                    <label>Deskripsi Mapel :</label>
                     <div class="input-group mb-3">
                       <textarea class="form-control " id="deskripsi_mapel" rows="2" name="deskripsi_mapel" placeholder="Masukkan Deskripsi Mata Pelajaran"></textarea>
                     </div>
-                    <label>Foto Mapel</label>
+                    <label>Foto Mapel :</label>
                     <div class="input-group mb-3">
                       <input class="form-control" type="file" id="foto_mapel" name="foto_mapel">
                     </div>
@@ -554,8 +560,8 @@
     });
   </script>
   <script>
-    @if(Session::has('succes'))
-    toastr.success("{{Session::get('succes')}}")
+    @if(Session::has('success'))
+    toastr.success("{{Session::get('success')}}")
     @endif
   </script>
 </body>

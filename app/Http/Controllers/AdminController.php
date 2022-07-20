@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\sekolah;
 use Illuminate\Http\Request;
 use App\Models\userguru;
+use App\Models\usersiswa;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -15,10 +16,10 @@ class AdminController extends Controller
     //tampilan admin
     public function dashboard_admin()
     {
-
+        $siswa = usersiswa::count();
         $guru = userguru::count();
         $data = sekolah::count();
-        return view('admin.dashboard_admin', compact('data', 'guru'));
+        return view('admin.dashboard_admin', compact('data', 'guru', 'siswa'));
     }
     public function profile_admin()
     {
@@ -27,6 +28,7 @@ class AdminController extends Controller
     }
     public function tambah_sekolah(Request $request)
     {
+        $siswa = usersiswa::count();
         $guru = userguru::count();
         if ($request->has('search')) {
             $data = sekolah::where('nama', 'LIKE', '%' . $request->search . '%')->paginate(4)->count();
@@ -35,7 +37,7 @@ class AdminController extends Controller
             $data = sekolah::paginate(4);
         }
 
-        return view('admin.tambah_sekolah', compact('data', 'total', 'guru'));
+        return view('admin.tambah_sekolah', compact('data', 'total', 'guru', 'siswa'));
     }
     public function tambah_data_sekolah()
     {
@@ -43,9 +45,11 @@ class AdminController extends Controller
     }
     public function detail_sekolah($id)
     {
-        $count = userguru::where('sekolah_id', '=', $id)->count();
+        $count = userguru::where('id_sekolah', '=', $id)->count();
+        $count2 = usersiswa::where('id_sekolah', '=', $id)->count();
+        $all = $count + $count2;
         $data = sekolah::where('id', $id)->first();
-        return view('admin.detail_sekolah', compact('data', 'count'));
+        return view('admin.detail_sekolah', compact('data', 'count', 'count2', 'all'));
     }
     public function edit_data_sekolah($id)
     {

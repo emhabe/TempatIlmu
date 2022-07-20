@@ -156,6 +156,15 @@
               <div class="card-body">
                 <form action="/sign_in_prosessiswa" method="post" enctype="multipart/form-data">
                   @csrf
+                  @if ($pesan = Session::get('pesan'))
+
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+                    <span class="alert-text">{{$pesan}}
+                      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div> @endif
                   <div class="mb-3">
                     <input type="text" class="form-control" id="nisn" name="nisn" placeholder="NISN">
                   </div>

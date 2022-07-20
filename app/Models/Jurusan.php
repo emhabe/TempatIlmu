@@ -18,4 +18,12 @@ class Jurusan extends Model
     {
         return $this->hasOne(usersiswa::class);
     }
+    public function usergurus_jurusan()
+    {
+        return $this->hasMany(usergurus_jurusan::class);
+    }
+    public function userguru_kelas()
+    {
+        return $this->hasMany(usergurus_kelas::class);
+    }
 }

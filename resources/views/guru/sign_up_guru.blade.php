@@ -140,20 +140,43 @@
 
                     </div>
                     <div><label>Kelas</label></div>
-                    @foreach($data['kelas'] as $kelas)
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="kelas[]" id="kelas" value="{{$kelas->nama}}">
-                      <label class="form-check-label" for="$kelas->nama">{{$kelas->nama}}</label>
-                    </div>
-                    @endforeach
+                    <nav>
+                      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        @foreach($data['kelas'] as $kls)
+                        <button class="nav-link <?php if ($kls->id == 1) {
+                                                  echo 'active';
+                                                } ?>" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home{{$kls->id}} " type="button" role="tab" aria-controls="nav-home" aria-selected="true">{{$kls->nama}}</button>
+                        @endforeach
 
-                    <div><label>Jurusan</label></div>
-                    @foreach($data['jurusan'] as $jurusan)
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="jurusan[]" id="jurusan" value="{{$jurusan->nama}}">
-                      <label class="form-check-label" for="{{$jurusan->nama}}">{{$jurusan->nama}}</label>
+                      </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                      @foreach($data['kelas'] as $kls)
+                      <div class="tab-pane fade <?php if ($kls->id == 1) {
+                                                  echo 'show active';
+                                                } ?>" id="nav-home{{$kls->id}}" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="{{$kls->id}}">
+                        @foreach($data['jurusan'] as $jurusan)
+
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="jurusan{{$kls->id}}[]" id="jurusan" value="{{$jurusan->id}}">
+                          <label class="form-check-label" for="{{$jurusan->nama}}">{{$jurusan->nama}}</label>
+                        </div>
+                        @endforeach
+                      </div>
+                      @endforeach
                     </div>
-                    @endforeach
+
+                    <!-- <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                  @foreach($data['jurusan'] as $jurusan)
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="jurusan[]" id="jurusan" value="{{$jurusan->nama}}">
+                    <label class="form-check-label" for="{{$jurusan->nama}}">{{$jurusan->nama}}</label>
+                  </div>
+                  @endforeach
+                </div>
+              </div> --}}
+              {{-- @endforeach --}} -->
 
 
 
