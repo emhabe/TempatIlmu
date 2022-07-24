@@ -19,4 +19,8 @@ class usergurus_jurusan extends Model
     {
         return $this->belongsTo(userguru::class);
     }
+    public function mapel()
+    {
+        return $this->hasMany(Mapel::class);
+    }
 }

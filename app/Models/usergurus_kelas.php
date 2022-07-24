@@ -19,4 +19,8 @@ class usergurus_kelas extends Model
     {
         return $this->belongsTo(userguru::class);
     }
+    public function mapel()
+    {
+        return $this->hasMany(Mapel::class);
+    }
 }

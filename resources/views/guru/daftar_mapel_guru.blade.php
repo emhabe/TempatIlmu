@@ -4,31 +4,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/home.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('/assets/img/apple-icon.png')}}">
+  <link rel="icon" type="image/png" href="{{asset('/assets/img/home.png')}}">
   <title>
     Ruang Belajar
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
+  <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{asset('/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
+  <link id="pagestyle" href="{{asset('assets/css/soft-ui-dashboard.css?v=1.0.5')}}" rel="stylesheet" />
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="https://kit.fontawesome.com/d15f42d323.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps bg-white" id="sidenav-main"> 
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 ps bg-white" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="/index" target="_blank">
-        <img src="../assets/img/home.png" class="navbar-brand-img h-100" alt="main_logo">
+        <img src="{{asset('/assets/img/home.png')}}" class="navbar-brand-img h-100" alt="main_logo">
         <span class="ms-2 font-weight-bold"><span class="text-primary text-gradient">Ruang </span>Belajar</span>
       </a>
     </div>
@@ -83,56 +83,36 @@
             <span class="nav-link-text ms-1">Daftar Kelas</span>
           </a>
           <div class="collapse" id="pagesExamples">
+            @foreach($datakelas[0]->usergurus_kelas as $kls)
             <ul class="nav ms-4 ps-3">
               <li class="nav-item ">
-                <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#profileExample">
+                <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#profileExample{{$kls->kelas_id}}">
                   <span class="sidenav-mini-icon"> P </span>
-                  <span class="sidenav-normal"> Kelas X <b class="caret"></b></span>
+                  <span class="sidenav-normal">Kelas {{$kls->kelas->nama}}
+                    <b class="caret"></b></span>
                 </a>
-                <div class="collapse" id="profileExample">
+                <div class="collapse " id="profileExample{{$kls->kelas_id}}">
+                  @foreach($datakelas[0]->usergurus_jurusan as $jj)
+
+                  @if($jj->kelas_id == $kls->kelas_id)
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                      <a class="nav-link" href="/daftar_mapel_guru">
-                        <span class="sidenav-mini-icon text-xs"> P </span>
-                        <span class="sidenav-normal"> RPL </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="../guru/teams.html">
-                        <span class="sidenav-mini-icon text-xs"> T </span>
-                        <span class="sidenav-normal"> TJK</span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="../guru/projects.html">
-                        <span class="sidenav-mini-icon text-xs"> A </span>
-                        <span class="sidenav-normal"> TEI </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="../guru/projects.html">
-                        <span class="sidenav-mini-icon text-xs"> A </span>
-                        <span class="sidenav-normal"> TOI </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="../guru/projects.html">
-                        <span class="sidenav-mini-icon text-xs"> A </span>
-                        <span class="sidenav-normal"> TKR </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="../guru/projects.html">
-                        <span class="sidenav-mini-icon text-xs"> A </span>
-                        <span class="sidenav-normal"> TBSM </span>
+                      <a class="nav-link" href="/daftar_mapel_guru/{{$kls->kelas_id}}/{{$jj->id}}">
+                        <span class="sidenav-mini-icon text-xs"> </span>
+                        <span class="sidenav-normal"> {{$jj->jurusan->nama}} </span>
                       </a>
                     </li>
                   </ul>
+                  @endif
+                  @endforeach
                 </div>
+
               </li>
             </ul>
+            @endforeach
           </div>
         </li>
+
         <li class="nav-item">
           <a class="nav-link  " href="/daftar_tugas_guru">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -185,29 +165,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="/sign_in_guru">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <svg width="15px" height="15px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <title>document</title>
-                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                    <g transform="translate(1716.000000, 291.000000)">
-                      <g transform="translate(154.000000, 300.000000)">
-                        <path class="color-background opacity-6" d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z">
-                        </path>
-                        <path class="color-background" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z">
-                        </path>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <span class="nav-link-text ms-1">Sign In</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link  " href="/sign_up_guru">
+          <a class="nav-link  " href="/sign_out_guru">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="20px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>spaceship</title>
@@ -229,7 +187,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
+            <span class="nav-link-text ms-1">Log Out</span>
           </a>
         </li>
       </ul>
@@ -249,8 +207,10 @@
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group">
               <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-               <form action="/daftar_mapel_guru" method="get">
-                <input type="search"id="inputPassword6" name="search" class="form-control" placeholder="Type here..." name="search">
+              @foreach ($datamapel as $ow)
+              <form action="/daftar_mapel_guru/{{$ow->usergurus_kelas_id}}/{{$ow->usergurus_jurusan_id}}" method="get">
+                @endforeach
+                <input type="search" id="inputPassword6" name="search" class="form-control" placeholder="Type here..." name="search">
               </form>
             </div>
           </div>
@@ -346,7 +306,7 @@
           </ul>
         </div>
       </div>
-      
+
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid py-3">
@@ -365,7 +325,7 @@
                   <div class="ms-3 my-auto text-gradient text-primary">
                     <h5>{{$row->nama_mapel}}</h5>
                   </div>
-                  <div class="ms-auto">
+                  <div class=" ms-auto">
                     <div class="dropstart">
                       <a href="javascript:;" class="text-secondary" id="dropdownMarketingCard" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
@@ -431,9 +391,9 @@
         </div>
         @endforeach
         @if(count($datamapel))
-                        @else
-                        <h6 class="text-center" style="margin-right:100px;">~~~~ Data Mapel Kosong ~~~~</h6>
-                       @endif
+        @else
+        <h6 class="text-center" style="margin-right:100px;">~~~~ Data Mapel Kosong ~~~~</h6>
+        @endif
       </div>
     </div>
     <div class="col-lg-4">
@@ -446,7 +406,7 @@
                   <h3 class="font-weight-bolder text-primary text-gradient">Tambah Mapel</h3>
                 </div>
                 <div class="card-body">
-                  <form role="form text-left" action="/insert_mapel" method="post" enctype="multipart/form-data">
+                  <form role="form text-left" action="/insert_mapel/{{ Request::segment(2) }}/{{ Request::segment(3) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <label>Nama Mapel :</label>
                     <div class="input-group mb-3">
@@ -509,10 +469,10 @@
     </div>
   </main>
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="{{asset('/assets/js/core/popper.min.js')}}"></script>
+  <script src="{{asset('/assets/js/core/bootstrap.min.js')}}"></script>
+  <script src="{{asset('/assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
+  <script src="{{asset('/assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -529,7 +489,7 @@
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
+  <script src="{{asset('/assets/js/soft-ui-dashboard.min.js?v=1.0.5')}}"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>

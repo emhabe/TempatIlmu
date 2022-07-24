@@ -112,14 +112,14 @@ class LoginController extends Controller
 
     public function sign_up_usersiswa(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|min:2|max:255',
-            'email' => 'required',
-            'password' => 'required|min:8|max:100',
+        // $validatedData = $request->validate([
+        //     'name' => 'required|min:2|max:255',
+        //     'email' => 'required',
+        //     'password' => 'required|min:8|max:100',
 
 
 
-        ]);
+        // ]);
 
         $data = usersiswa::create([
             'nisn' => $request->nisn,
@@ -133,7 +133,7 @@ class LoginController extends Controller
             'remember_token' => Str::random(60),
         ]);
 
-        return redirect('/sign_in_siswa');
+        return redirect('/sign_in_siswa')->with('pesan', 'Anda Berhasil Register');;
     }
     public function sign_in_prosessiswa(Request $request)
     {
@@ -141,6 +141,6 @@ class LoginController extends Controller
             return redirect('dashboard_siswa');
         }
 
-        return \redirect('sign_in_siswa')->with('pesan', 'Anda Berhasil Register');
+        return \redirect('sign_in_siswa');
     }
 }

@@ -82,54 +82,33 @@
             <span class="nav-link-text ms-1">Daftar Kelas</span>
           </a>
           <div class="collapse" id="pagesExamples">
+            @foreach($datakelas[0]->usergurus_kelas as $kls)
             <ul class="nav ms-4 ps-3">
               <li class="nav-item ">
-                <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#profileExample">
+                <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#profileExample{{$kls->kelas_id}}">
                   <span class="sidenav-mini-icon"> P </span>
-                  <span class="sidenav-normal"> Kelas X <b class="caret"></b></span>
+                  <span class="sidenav-normal">Kelas {{$kls->kelas->nama}}
+                    <b class="caret"></b></span>
                 </a>
-                <div class="collapse" id="profileExample">
+                <div class="collapse " id="profileExample{{$kls->kelas_id}}">
+                  @foreach($datakelas[0]->usergurus_jurusan as $jj)
+
+                  @if($jj->kelas_id == $kls->kelas_id)
                   <ul class="nav nav-sm flex-column">
                     <li class="nav-item">
-                      <a class="nav-link" href="/daftar_mapel_guru">
-                        <span class="sidenav-mini-icon text-xs"> P </span>
-                        <span class="sidenav-normal"> RPL </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="../guru/teams.html">
-                        <span class="sidenav-mini-icon text-xs"> T </span>
-                        <span class="sidenav-normal"> TJK</span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="../guru/projects.html">
-                        <span class="sidenav-mini-icon text-xs"> A </span>
-                        <span class="sidenav-normal"> TEI </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="../guru/projects.html">
-                        <span class="sidenav-mini-icon text-xs"> A </span>
-                        <span class="sidenav-normal"> TOI </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="../guru/projects.html">
-                        <span class="sidenav-mini-icon text-xs"> A </span>
-                        <span class="sidenav-normal"> TKR </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link " href="../guru/projects.html">
-                        <span class="sidenav-mini-icon text-xs"> A </span>
-                        <span class="sidenav-normal"> TBSM </span>
+                      <a class="nav-link" href="/daftar_mapel_guru/{{$kls->kelas_id}}/{{$jj->id}}">
+                        <span class="sidenav-mini-icon text-xs"> </span>
+                        <span class="sidenav-normal"> {{$jj->jurusan->nama}} </span>
                       </a>
                     </li>
                   </ul>
+                  @endif
+                  @endforeach
                 </div>
+
               </li>
             </ul>
+            @endforeach
           </div>
         </li>
         <li class="nav-item">
@@ -240,7 +219,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/daftar_mapel_guru">Daftar Mapel</a></li>
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="/daftar_mapel_guru/{{$datamapel->usergurus_kelas_id}}/{{$datamapel->usergurus_jurusan_id}}">Daftar Mapel</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Bab</li>
           </ol>
           <h6 class="font-weight-bolder mb-0">Bab</h6>
@@ -249,8 +228,8 @@
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group">
               <form action="/daftar_bab/{{$datamapel->id}}" method="GET">
-               <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-               <input type="search" class="form-control" placeholder="Type here..." name="search">
+                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <input type="search" class="form-control" placeholder="Type here..." name="search">
               </form>
             </div>
           </div>
@@ -351,7 +330,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-            <h5>{{$datamapel->nama_mapel}}</h5>
+              <h5>{{$datamapel->nama_mapel}}</h5>
               <span>
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">
                 <h6>Iwan AFK</h6>
@@ -405,7 +384,7 @@
                         </a>
                       </td>
                       <td class="align-middle text-center">
-                        <a href="DeleteData:;" class="text-danger font-weight-bold text-xs delete" data-id="{{$row->id}}" data-mapel="{{$row->mapel->id}}" data-nama="{{$row->judul}}" >
+                        <a href="DeleteData:;" class="text-danger font-weight-bold text-xs delete" data-id="{{$row->id}}" data-mapel="{{$row->mapel->id}}" data-nama="{{$row->judul}}">
                           Hapus Bab
                         </a>
                       </td>
@@ -414,16 +393,16 @@
                   </tbody>
                 </table>
                 @if(count($data))
-                        @else
-                        <h6 class="text-center" style="margin-right:80px;">~~~~ Data Bab Kosong ~~~~</h6>
-                       @endif
+                @else
+                <img src="{{asset('assets/img/theme/kosong.jpg')}}" height="340" style="margin-left:290px;">
+                @endif
               </div>
             </div>
           </div>
           {{$data->links()}}
         </div>
       </div>
-      
+
       <div class="col-lg-4">
         <div class="modal fade" id="modal-insert" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-" role="document">
@@ -521,7 +500,7 @@
     $('.delete').click(function() {
       var idbab = $(this).attr('data-id');
       var judul = $(this).attr('data-nama');
-      var idmapel=$(this).attr('data-mapel');
+      var idmapel = $(this).attr('data-mapel');
       swal({
           title: "Apakah Anda Yakin ?",
           text: "Anda akan Menghapus Bab Dengan judul : " + judul + " !!",

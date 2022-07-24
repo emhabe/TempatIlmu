@@ -26,13 +26,13 @@
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
-  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
+  <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.5" rel="stylesheet" />
+  <link id="pagestyle" href="{{asset('assets/css/soft-ui-dashboard.css?v=1.0.5')}}" rel="stylesheet" />
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
@@ -360,7 +360,7 @@
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img src="{{asset ('foto_siswa/' .Auth::guard('usersiswa')->user()->foto)}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
        
@@ -458,6 +458,8 @@
                   &nbsp;  {{Auth::guard('usersiswa')->user()->name}}</li>
                 <li class="list-group-item border-0 ps-0 text mb-3"><strong class="text-dark">Email:</strong> &nbsp;
                 {{Auth::guard('usersiswa')->user()->email}}</li>
+                <li class="list-group-item border-0 ps-0 text mb-3"><strong class="text-dark">Jenis Kelamin:</strong> &nbsp;
+                {{Auth::guard('usersiswa')->user()->jenis_kelamin}}</li>
                 <li class="list-group-item border-0 ps-0 text mb-3"><strong class="text-dark">Kelas:</strong> &nbsp;
                 {{Auth::guard('usersiswa')->user()->kelas_id}}</li>
                 <li class="list-group-item border-0 ps-0 text mb-3"><strong class="text-dark">Jurusan:</strong>
@@ -468,7 +470,7 @@
             </div>
           </div>
         </div>
-        <div class="col-19 col-xl-6 ml-19">
+        <!-- <div class="col-19 col-xl-6 ml-19">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
               <h6 class="mb-0">Teman Kelas</h6>
@@ -528,7 +530,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="col-12 mt-4">
         </div>
       </div>
@@ -636,10 +638,10 @@
       </div>
     </div>
     <!--   Core JS Files   -->
-    <script src="../assets/js/core/popper.min.js"></script>
-    <script src="../assets/js/core/bootstrap.min.js"></script>
-    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
     <script>
       var win = navigator.platform.indexOf('Win') > -1;
       if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -652,7 +654,7 @@
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
+    <script src="{{asset('assets/js/soft-ui-dashboard.min.js?v=1.0.5')}}"></script>
 </body>
 
 </html>

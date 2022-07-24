@@ -54,6 +54,8 @@ Route::get('/sign_out_guru', [LoginController::class, 'sign_out_guru'])->name('s
 
 //edit profile guru
 Route::post('/update_profile_guru', [GuruController::class, 'update_profile_guru'])->name('update_profile_guru');
+//edit profile siswa
+Route::post('/update_profile_siswa', [SiswaController::class, 'update_profile_siswa'])->name('update_profile_siswa');
 
 
 //proses login siswa
@@ -65,7 +67,7 @@ Route::post('/sign_in_prosessiswa', [LoginController::class, 'sign_in_prosessisw
 
 Route::get('/dashboard_guru', [GuruController::class, 'dashboard_guru'])->name('dashboard_guru');
 Route::get('/daftar_bab/{id}', [GuruController::class, 'daftar_bab'])->name('daftar_bab');
-Route::get('/daftar_mapel_guru', [GuruController::class, 'daftar_mapel_guru'])->name('daftar_mapel_guru');
+Route::get('/daftar_mapel_guru/{kelas_id}/{jurusan_id}', [GuruController::class, 'daftar_mapel_guru'])->name('daftar_mapel_guru');
 Route::get('/daftar_tugas_guru', [GuruController::class, 'daftar_tugas_guru'])->name('daftar_tugas_guru');
 Route::get('/edit_bab/{id}', [GuruController::class, 'edit_bab'])->name('edit_bab');
 Route::get('/edit_materi', [GuruController::class, 'edit_materi'])->name('edit_materi');
@@ -89,7 +91,7 @@ Route::post('/insert_bab/{id}', [GuruController::class, 'insert_bab'])->name('in
 Route::get('/delete_tugas/{id}/{idbab}', [GuruController::class, 'delete_tugas'])->name('delete_tugas');
 Route::post('/update_tugas/{id}', [GuruController::class, 'update_tugas'])->name('update_tugas');
 Route::get('/tambah_mapel', [GuruController::class, 'tambah_mapel'])->name('tambah_mapel');
-Route::post('/insert_mapel', [GuruController::class, 'insert_mapel'])->name('insert_mapel');
+Route::post('/insert_mapel/{kelas_id}/{jurusan_id}', [GuruController::class, 'insert_mapel'])->name('insert_mapel');
 Route::get('/delete_mapel/{id}', [GuruController::class, 'delete_mapel'])->name('delete_mapel');
 Route::post('/update_mapel/{id}', [GuruController::class, 'update_mapel'])->name('update_mapel');
 Route::get('/daftar_mapel_tugas', [GuruController::class, 'daftar_mapel_tugas'])->name('daftar_mapel_tugas');

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Tugas_siswa;
 use App\Models\Kelas;
+use App\Models\usersiswa;
 use App\Models\Jurusan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SiswaController extends Controller
 {
@@ -37,6 +39,18 @@ class SiswaController extends Controller
     {
         return view('pages.edit_profile_siswa');
     }
+    public function update_profile_siswa(Request $request){
+        $user = usersiswa::find(Auth::guard('usersiswa')->user()->id);
+        $input = $request->all();
+        if ($request->hasFile('foto')) {
+            $request->file('foto')->move('foto_siswa', $request->file('foto')->getClientOriginalName());
+            $user['foto'] = $request->file('foto')->getClientOriginalName();
+            $user->save();
+        }
+        $user->update($input);
+        return redirect('profile_siswa');
+    }
+    
     public function lihat_bab()
     {
         return view('pages.lihat_bab');

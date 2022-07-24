@@ -210,9 +210,9 @@
                 <i class="fa-solid fa-screwdriver-wrench"></i>
               </div>
               <div class="description">
-                <h4 class="info-title">Fiture - Fiture</h4>
+                <h4 class="info-title">Fitur - Fitur</h4>
                 <p class="desc">
-                  Ruang Belajar Memiki Begitu Banyak fiture yang tentu saja fitur fitur yang disediakan menarik dan unik dan tentu saja nyaman digunakan!
+                  Ruang Belajar Memiki Begitu Banyak fitur yang tentu saja fitur fitur yang disediakan menarik dan unik dan tentu saja nyaman digunakan!
                 </p>
                 <a href="/about" class="btn">Read More</a>
               </div>
